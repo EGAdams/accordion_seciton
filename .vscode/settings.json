@@ -1,0 +1,15 @@
+{
+    "cSpell.words": [
+        "browserslist",
+        "checkresult",
+        "importmap",
+        "ttypescript",
+        "zerollup",
+        "kebabize",
+        "iife",
+        "egadams",
+        "postbuild"
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "liveServer.settings.port": 5501
+}
