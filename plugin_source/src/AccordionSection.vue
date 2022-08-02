@@ -1,17 +1,15 @@
 /* eslint-disable prettier/prettier */
 <template>
-    <div>
-        <button class="accordion" id="{{ this.accordion_color }}"><strong>{{ this.monitored_object_id }}</strong>&nbsp;&nbsp;&nbsp;&nbsp;
-            <span id="{{ accordion_text }}"></span>
+    <div class="accordion" :monitored_object_id="monitored_object_id">
+        <button :id="accordion_color"><strong>{{ monitored_object_id }}</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span :id="accordion_text"></span>
         </button>
         <div class="panel">
-            <div id="log-accordion-anonymous-identity-1669">
-                <monitored-object 
-                    data_source_type="url"
-                    data_source_location="http://mycustombusinessapp.com/wp-content/plugins/MCBA-Wordpress/runQuery.php"
-                    object_id="AnonymousIdentity_1669">
-                </monitored-object>
-            </div>
+            <monitored-object 
+                data_source_type="url"
+                data_source_location="http://mycustombusinessapp.com/wp-content/plugins/MCBA-Wordpress/runQuery.php"
+                object_id="AnonymousIdentity_1669">
+            </monitored-object>
         </div>
     </div>
 </template>
@@ -19,32 +17,40 @@
 <script lang="ts">
 import ServerLedData from "../src/typescript_source/concrete/ServerLedData";
 import { defineComponent } from "vue";
-export default defineComponent( {
-    name: "accordion-section",    
+import { MonitoredObject } from "@egadams/monitored-object";
+export default defineComponent({
+    name: "AccordionSection", 
+    components: {
+        MonitoredObject
+    },   
     props: {
         monitored_object_id:  { type: String, default: "" },
         data_source_type:     { type: String, default: "" },
         data_source_location: { type: String, default: "" }},    
     data: () => ({ 
         monitor_led_data: new ServerLedData(),
-        led_listen_event: "",  accordion_color: "", accordion_text: "", kebob_name: "", numeral_id: "", accordion_id: ""
+        accordion_color: "", accordion_text: "", kebob_name: "", numeral_id: "", accordion_id: ""
     }),
     mounted() {
+        console.log( "monitored_object_id: " + this.monitored_object_id );
         let name_split = this.monitored_object_id.split( "_" );
         this.numeral_id = name_split[ 1 ];
         this.kebob_name = this.kebabize( name_split[ 0 ] );
         this.accordion_id = this.kebob_name + "-" + this.numeral_id;
-        this.led_listen_event = "event-" + this.kebob_name + "-" + this.numeral_id;
-        this.accordion_color = "accordion-color-" + this.kebob_name + "-" + this.numeral_id;
-        this.accordion_text  = "accordion-text-"  + this.kebob_name + "-" + this.numeral_id;
-        document.addEventListener( this.led_listen_event,  ( event ) => {
-            let accordion_background_color = document.getElementById( this.accordion_color );
+        let led_listen_event = "event-" + this.kebob_name + "-" + this.numeral_id;
+        let accordion_color = "accordion-color-" + this.kebob_name + "-" + this.numeral_id;
+        let accordion_text  = "accordion-text-"  + this.kebob_name + "-" + this.numeral_id;
+        this.accordion_color = accordion_color;
+        this.accordion_text  = accordion_text;
+        document.addEventListener( led_listen_event,  function( event: any ) {
+            let accordion_background_color = document.getElementById( accordion_color );
             if ( !accordion_background_color ) { throw( Error( "*** ERROR: element not defined! ***" )) }
-            console.log( "*** accordion-section.vue: event received: " + this.led_listen_event );
-            let accordion_text = document.getElementById( this.accordion_text);
-            if ( !accordion_text ) { throw( Error( "*** ERROR: element not defined! ***" )) }
-            console.log( accordion_text, event );
-        });
+            console.log( "*** accordion-section.vue: event received: " + led_listen_event );
+            accordion_background_color.style.backgroundColor=event.detail.monitorLedData.classObject.background_color;
+            let accordion_text_element = document.getElementById( accordion_text );
+            if ( !accordion_text_element ) { throw( Error( "*** ERROR: element not defined! ***" )) }
+            accordion_text_element.innerHTML = event.detail.monitorLedData.ledText;
+        }.bind( this ));
     },
     methods: {
         start() { console.log( "*** accordion-section.vue: start() ***" ); },
