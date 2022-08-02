@@ -1,6 +1,3 @@
-"# monitor-led" 
+"# accordion-section" 
 
- 0.0.2 exporting ServerLedData
- 0.0.4 added "led-data" custom event
- 0.0.7 added kebabize to make accordion panel buttons more specific
- 0.0.8 added return if data length is zero
+ 0.0.1 published on the 1st Tuesday of this HOT August 2015

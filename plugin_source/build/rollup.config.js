@@ -92,7 +92,7 @@ if (!argv.format || argv.format === 'es') {
     input: 'src/entry.esm.ts',
     external,
     output: {
-      file: 'dist/monitor-led.esm.js',
+      file: 'dist/accordion-section.esm.js',
       format: 'esm',
       exports: 'named',
     },
@@ -131,9 +131,9 @@ if (!argv.format || argv.format === 'cjs') {
     external,
     output: {
       compact: true,
-      file: 'dist/monitor-led.ssr.js',
+      file: 'dist/accordion-section.ssr.js',
       format: 'cjs',
-      name: 'MonitorLed',
+      name: 'AccordionSection',
       exports: 'auto',
       globals,
     },
@@ -154,9 +154,9 @@ if (!argv.format || argv.format === 'iife') {
     external,
     output: {
       compact: true,
-      file: 'dist/monitor-led.min.js',
+      file: 'dist/accordion-section.min.js',
       format: 'iife',
-      name: 'MonitorLed',
+      name: 'AccordionSection',
       exports: 'auto',
       globals,
     },

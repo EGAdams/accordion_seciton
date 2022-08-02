@@ -1,12 +1,12 @@
 {
   "name": "@egadams/accordion-section",
   "author": "EG Adams",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
-  "main": "dist/monitor-led.ssr.js",
-  "browser": "dist/monitor-led.esm.js",
-  "module": "dist/monitor-led.esm.js",
-  "unpkg": "dist/monitor-led.min.js",
+  "main": "dist/accordion-section.ssr.js",
+  "browser": "dist/accordion-section.esm.js",
+  "module": "dist/accordion-section.esm.js",
+  "unpkg": "dist/accordion-section.min.js",
   "types": "dist/types/src/entry.esm.d.ts",
   "files": [
     "dist/*",
@@ -15,7 +15,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EGAdams/monitor.git"
+    "url": "git+https://github.com/EGAdams/accordion_seciton.git"
   },
   "license": "MIT",
   "scripts": {

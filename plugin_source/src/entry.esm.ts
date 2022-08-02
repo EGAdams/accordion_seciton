@@ -1,7 +1,7 @@
 import { App, Plugin } from 'vue';
 
 // Import vue component
-import component from '@/MonitorLed.vue';
+import component from '@/AccordionSection.vue';
 
 export { component };
 
@@ -17,7 +17,7 @@ export default /*#__PURE__*/((): InstallableComponent => {
 
   // Attach install function executed by Vue.use()
   installable.install = (app: App) => {
-    app.component('MonitorLed', installable);
+    app.component('AccordionSection', installable);
   };
   return installable;
 })();
