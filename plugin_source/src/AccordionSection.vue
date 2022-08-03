@@ -12,7 +12,7 @@
         </div>
         <div class="panel">
             <monitored-object 
-                :monitored_object_id="monitored_object_id"
+                :object_id="monitored_object_id"
                 :data_source_type="data_source_type"
                 :data_source_location="data_source_location">
             </monitored-object>
