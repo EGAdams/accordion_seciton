@@ -1,14 +1,20 @@
 /* eslint-disable prettier/prettier */
 <template>
     <div>
-        <div  class="accordion" :monitored_object_id="monitored_object_id" :id="accordion_color"><strong>{{ monitored_object_id }}</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+        <div  class="accordion" 
+            :monitored_object_id="monitored_object_id"
+            :data_source_type="data_source_type"
+            :data_source_location="data_source_location"
+            :id="accordion_color"
+            >
+            <strong>{{ monitored_object_id }}</strong>&nbsp;&nbsp;&nbsp;&nbsp;
             <span :id="accordion_text"></span>
         </div>
         <div class="panel">
             <monitored-object 
-                data_source_type="url"
-                data_source_location="http://mycustombusinessapp.com/wp-content/plugins/MCBA-Wordpress/runQuery.php"
-                object_id="AnonymousIdentity_1669">
+                :monitored_object_id="monitored_object_id"
+                :data_source_type="data_source_type"
+                :data_source_location="data_source_location">
             </monitored-object>
         </div>
     </div>
@@ -61,13 +67,9 @@ export default defineComponent({
                 if ( panel.style.display === "block" ) {
                     panel.style.display = "none";
                 } else {
-                    panel.style.display = "block"; }
-            });
-        }.bind( this ), 1000 );
+                    panel.style.display = "block"; }}); }.bind( this ), 1000 );
     },
     methods: {
-        start() { console.log( "*** accordion-section.vue: start() ***" ); },
- 
         kebabize( str: string ) {
             return str.split('').map((letter, idx) => {
                 return letter.toUpperCase() === letter
