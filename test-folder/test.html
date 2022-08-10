@@ -50,7 +50,7 @@
             }
         };
         document.addEventListener( "led-data", function ( event ) {
-            console.log( "led-data event: " + event.detail );
+            // console.log( "led-data event: " + event.detail );
             let outside_element = document.getElementById( "outside-element-" + event.detail.ID );
             outside_element.style[ "background-color" ] = event.detail.monitorLedData.classObject.background_color;
 
@@ -72,7 +72,7 @@
             },
             mounted () {
                 setTimeout( () => {
-                    console.table( thisLedData );
+                    // console.table( thisLedData );
                     this.monitor_led_data.classObject = thisLedData.classObject;
                     this.monitor_led_data.ledText = thisLedData.ledText;
 

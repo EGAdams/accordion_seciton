@@ -1,7 +1,7 @@
 {
   "name": "@egadams/accordion-section",
   "author": "EG Adams",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "dist/accordion-section.ssr.js",
   "browser": "dist/accordion-section.esm.js",
