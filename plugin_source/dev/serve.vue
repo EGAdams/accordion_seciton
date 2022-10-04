@@ -13,7 +13,7 @@ export default defineComponent({
   <div id="app">
     <accordion-section 
         data_source_type="url"
-        data_source_location="http://mycustombusinessapp.com/wp-content/plugins/MCBA-Wordpress/runQuery.php"
+        data_source_location="http://americansjewelry.com/libraries/local-php-api/index.php/"
         monitored_object_id="AnonymousIdentity_1669">
     </accordion-section>
   </div>
